@@ -1,0 +1,196 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+  }
+
+body {
+    background: url('../img/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: stretch;
+}
+
+.clearfix {
+    float: none;
+    clear: both;
+}
+
+a {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: rgba(86, 84, 190, 1);
+}
+
+button {
+    border-radius: 3px;
+    width: 60px;
+}
+
+#content {
+    width: 75%;
+    height: 100%;
+    margin: 0px auto;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    padding: 15px;
+    box-shadow: 3px 3px 20px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-family: Elephant, Helvetica, Arial, serif;
+    font-size: 3em;
+}
+
+main {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+main h2 {
+    font-family: Elephant, Helvetica, Arial, serif;
+    margin-bottom: 5px;
+}
+
+main form {
+    flex-direction: column;
+    border-color: 5px black;
+    padding: 10px;
+}
+
+form {
+    display: flex;
+    margin: 5px;
+}
+
+form label {
+    font-family: Elephant, Helvetica, Arial, serif;
+    margin: 10px;
+    margin-bottom: 5px;
+}
+
+form input {
+    margin: 0px auto;
+    width: 40%;
+    border-radius: 5px;
+}
+
+form input[type="email"],
+form input[type="password"],
+form input[type="text"] {
+    padding: 5px;
+}
+
+form input[type="submit"] {
+    margin: 0px auto;
+    margin-top: 20px;
+    width: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    background-color: rgba(86, 84, 190, 1);
+    color: white;
+
+}
+
+main p {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+}
+
+#todo-view {
+    width: 100%;
+    height: auto;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+#user-menu {
+    width: 20%;
+    height: 160px;
+    text-align: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border: 3px black;
+    box-shadow: 3px 3px 10px;
+    padding: 10px;
+}
+
+#user-menu strong {
+    font-size: 1.5em;
+}
+
+#user-menu ul {
+    margin-top: 20px;
+}
+
+#user-menu li {
+    line-height: 30px;
+}
+
+#todo-menu {
+    width: 60%;
+    min-height: 100px;
+    height: auto;
+    text-align: right;
+    line-height: 30px;
+}
+
+#todo-menu h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#todo-menu li {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#anouncement {
+    width: 20%;
+    font-size: 1.5em;
+}
+
+.success {
+    color: green;
+}
+
+.fail {
+    color: red;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    margin: 0px auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}

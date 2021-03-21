@@ -37,7 +37,7 @@ class User{
     }
 
     function setNickname($nickname){
-        $this->nickname = $nickname;
+        $this->nickname = $this->db->real_escape_string($nickname);
     }
 
     function setPassword($password){

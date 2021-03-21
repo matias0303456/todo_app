@@ -39,7 +39,7 @@ class Todo{
     }
 
     function setContent($content){
-        $this->content = $content;
+        $this->content = $this->db->real_escape_string($content);
     }
 
     function setCreated_at($created_at){

@@ -28,12 +28,12 @@ body {
 
 a {
     font-family: Arial, Helvetica, sans-serif;
-    color: black;
+    color: rgba(86, 84, 190, 1);
     transition: 0.3s;
 }
 
 a:hover {
-    color: rgba(86, 84, 190, 1);
+    color: red;
 }
 
 button {
@@ -130,8 +130,8 @@ main p {
 }
 
 #user-menu {
-    width: 20%;
-    height: 160px;
+    width: 20% auto;
+    height: auto;
     text-align: left;
     margin-right: 20px;
     margin-bottom: 20px;
@@ -153,7 +153,7 @@ main p {
 }
 
 #todo-menu {
-    width: 60%;
+    width: 60% auto;
     min-height: 100px;
     height: auto;
     text-align: right;
@@ -180,6 +180,11 @@ main p {
 
 .fail {
     color: red;
+}
+
+.date {
+    font-size: 0.7em;
+    color: rgba(155, 155, 155, 0.7);
 }
 
 footer {

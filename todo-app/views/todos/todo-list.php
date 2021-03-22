@@ -11,7 +11,7 @@
                 <li><a href="<?=base_url?>usuarios/cerrar_sesion">Cerrar sesión</a></li>
             </ul>
 
-            </nav>
+        </nav>
 
         <div id="anouncement">
 
@@ -46,11 +46,11 @@
             <h2>Lista de tareas</h2>
 
             <ul>
-                <?php foreach($result as $indice => $todo): ?>
+                <?php foreach($result as $index => $todo): ?>
                     <li>
                     <button><a href="<?=base_url?>tareas/editar_tarea&id=<?=$todo[0]?>">Editar</a></button>
                     <button><a href="<?=base_url?>tareas/eliminar_tarea&id=<?=$todo[0]?>">Eliminar</a></button>
-                    <span class="todo"><?=$todo[2]?></span>
+                    <span class="todo"> | <?=$todo[2]?> | </span>
                     <span class="date"><?=$todo[3]?></span>
                     </li>
                 <?php endforeach; ?>

@@ -10,7 +10,14 @@ class usuariosController{
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function iniciar_sesion(){
+
+        if(isset($_GET)){
+            $token = Utils::generateToken();
+            $_SESSION['token'] = $token;
+
+        }
         require_once './views/users/login.php';
+
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,20 +68,25 @@ class usuariosController{
 
     public function login(){
 
-        $user = new User();
-        $user->setEmail($_POST['email']);
-        $user->setPassword($_POST['password']);
-
-        $identity = $user->login();
-
-        if($identity && is_object($identity)){
-            $_SESSION['identity'] = $identity;
-            header('Location:'.base_url.'tareas/lista_de_tareas');
+        if(empty($_POST['token']) || !hash_equals($_SESSION['token'], $_POST['token'])){
+            header('Location:'.base_url.'error/error');
 
         }else{
-            $_SESSION['login'] = 'failed';
-            header('Location:'.base_url);
+            $user = new User();
+            $user->setEmail($_POST['email']);
+            $user->setPassword($_POST['password']);
 
+            $identity = $user->login();
+
+            if($identity && is_object($identity)){
+                $_SESSION['identity'] = $identity;
+                header('Location:'.base_url.'tareas/lista_de_tareas');
+
+            }else{
+                $_SESSION['login'] = 'failed';
+                header('Location:'.base_url);
+
+            }
         }
     }
 
@@ -83,6 +95,12 @@ class usuariosController{
     public function cerrar_sesion(){
         if(isset($_SESSION['identity'])){
             unset($_SESSION['identity']);
+            header('Location:'.base_url);
+
+        }
+
+        if(isset($_SESSION['token'])){
+            unset($_SESSION['token']);
             header('Location:'.base_url);
 
         }
@@ -95,6 +113,8 @@ class usuariosController{
         if(isset($_SESSION['identity'])){
 
             if(isset($_GET)){
+                $token = Utils::generateToken();
+                $_SESSION['token'] = $token;
                 $edit = true;
                 $id = $_GET['id'];
 
@@ -122,23 +142,28 @@ class usuariosController{
 
             if(isset($_GET)){
 
-                $id = $_GET['id'];
-                $email = $_POST['email'];
-                $nickname = $_POST['nickname'];
-                $password = $_POST['password'];
+                if(empty($_POST['token']) || !hash_equals($_SESSION['token'], $_POST['token'])){
+                    header('Location:'.base_url.'error/error');
 
-                $user = new User();
-                $user->setId($id);
-                $user->setEmail($email);
-                $user->setNickname($nickname);
-                $user->setPassword($password);
-                $edit_user = $user->update();
-
-                if($edit_user){
-                    $_SESSION['edit'] = 'completed';
-                    header('Location:'.base_url);
                 }else{
-                    $_SESSION['edit'] = 'failed';
+                    $id = $_GET['id'];
+                    $email = $_POST['email'];
+                    $nickname = $_POST['nickname'];
+                    $password = $_POST['password'];
+
+                    $user = new User();
+                    $user->setId($id);
+                    $user->setEmail($email);
+                    $user->setNickname($nickname);
+                    $user->setPassword($password);
+                    $edit_user = $user->update();
+
+                    if($edit_user){
+                        $_SESSION['edit'] = 'completed';
+                        header('Location:'.base_url);
+                    }else{
+                        $_SESSION['edit'] = 'failed';
+                    }
                 }
             }
         }else{

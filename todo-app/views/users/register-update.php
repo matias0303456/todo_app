@@ -14,6 +14,8 @@
 
     <form action="<?=base_url?>usuarios/update_user&id=<?=$id?>" method="post">
 
+    <input type="hidden" name="token" value="<?=$_SESSION['token']?>">
+
     <label for="email">Email</label>
     <input type="email" name="email" placeholder="Introduce un e-mail válido" value="<?=$edit_user->email?>" required>
 
